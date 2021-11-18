@@ -4,8 +4,8 @@ ISO = 'CAISO';
 Location = 'WALNUT';
 load(sprintf('%s_%s_2016_2021.mat', ISO, Location))
 Ts = 1; % time step
-Ystart = 2019; % start year
-Yend = 2019; % end year
+Ystart = 2017; % start year
+Yend = 2017; % end year
 lambda = reshape(Q(:,((Ystart-2016)*365+2):((Yend-2015)*365+1)),numel(Q(:,((Ystart-2016)*365+2):((Yend-2015)*365+1))),1); 
 
 %% convert lambda to hourly resolution
@@ -18,7 +18,7 @@ end
 T = numel(lambdaH); % number of time steps
 
 %%
-Dur = 30; 
+Dur = 1; 
 Pr = 1/(Dur*24); % normalized power rating wrt energy rating
 P = Pr*Ts; % actual power rating taking time step size into account
 eta = .8; % efficiency

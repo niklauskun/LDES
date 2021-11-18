@@ -1,11 +1,11 @@
 addpath(genpath('/Users/ningkunzheng/Documents/GitHub/LDES/'))
 
 ISO = 'NYISO';
-Location = 'NORTH';
+Location = 'LONGIL';
 load(sprintf('%s_%s_2010_2019.mat', ISO, Location))
 Ts = 1; % time step
-Ystart = 2019; % start year
-Yend = 2019; % end year
+Ystart = 2017; % start year
+Yend = 2017; % end year
 lambda = reshape(RTP(:,(end-(2020-Ystart)*365+1):(end-(2019-Yend)*365)),numel(RTP(:,(end-(2020-Ystart)*365+1):(end-(2019-Yend)*365))),1); 
 
 %% convert lambda to hourly resolution
@@ -14,7 +14,7 @@ lambdaH = zeros(numel(lambda)/12,1);
 for i = 1:numel(lambdaH)
    lambdaH(i) = mean(lambda((i-1)*12 + (1:12),:)); 
 end
-
+                
 T = numel(lambdaH); % number of time steps
 % sum(lambdaH>200)
 % mean(lambdaH(lambdaH>200))

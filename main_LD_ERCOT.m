@@ -1,10 +1,10 @@
 addpath(genpath('C:\Users\wenmi\Desktop\LDES'))
 
-load('ercot2017west.mat')
-load('ercot2018west.mat')
-load('ercot2019west.mat')
+load('ercot2017.mat')
+load('ercot2018.mat')
+load('ercot2019.mat')
 ISO = 'ERCOT';
-Location = 'WEST';
+Location = 'HOUSTON';
 Ts = 1; % time step
 Ystart = 2017; % start year
 Yend = 2017; % end year
@@ -25,7 +25,7 @@ T = numel(lambdaH); % number of time steps
 % mean(lambdaH(lambdaH<0))
 % mean(lambdaH(lambdaH>=0 & lambdaH<=200))
 %%
-Dur = 30; 
+Dur = 1; 
 Pr = 1/(Dur*24); % normalized power rating wrt energy rating
 P = Pr*Ts; % actual power rating taking time step size into account
 eta = .8; % efficiency

@@ -15,6 +15,3 @@ for i  = 1:3
         binC((i-1)*4+j,:) = [hist(1) sum(hist(2:4)) sum(hist(5:7)) sum(hist(8:10))];
     end
 end
-
-% xlabel('Cycle Depth')
-% ylabel('Cycle Counts')

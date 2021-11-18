@@ -4,7 +4,7 @@ ISO = 'CAISO';
 Location = 'WALNUT';
 load(sprintf('%s_%s_2016_2021.mat', ISO, Location))
 Ts = 1; % time step
-Ystart = 2017; % start year
+Ystart = 2019; % start year
 Yend = 2019; % end year
 lambda = reshape(Q(:,((Ystart-2016)*365+2):((Yend-2015)*365+1)),numel(Q(:,((Ystart-2016)*365+2):((Yend-2015)*365+1))),1); 
 
@@ -96,4 +96,4 @@ solTimeOut = toc;
 
 clear v
 
-save(sprintf('%s_%s_Dur%d_%d_%d.mat', ISO, Location, Dur, Ystart, Yend), '-v7.3')
+save(sprintf('%s_%s_Dur%d_%d_%d_DS.mat', ISO, Location, Dur, Ystart, Yend), '-v7.3')

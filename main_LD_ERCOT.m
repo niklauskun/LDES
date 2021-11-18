@@ -1,17 +1,15 @@
 addpath(genpath('C:\Users\wenmi\Desktop\LDES'))
 
-load('ercot2017.mat')
-load('ercot2018.mat')
-load('ercot2019.mat')
+load('ercot2017west.mat')
+load('ercot2018west.mat')
+load('ercot2019west.mat')
 ISO = 'ERCOT';
 Location = 'WEST';
 Ts = 1; % time step
-Ystart = 2019; % start year
-Yend = 2019; % end year
-lambda1 = reshape(N5,numel(N5),1);
-lambda2 = reshape(N6,numel(N5),1);
-lambda3 = reshape(N7,numel(N5),1);
-lambda = cat(1,lambda1,lambda2,lambda3);
+Ystart = 2017; % start year
+Yend = 2017; % end year
+lambda = reshape(N5,numel(N5),1);
+
 %% convert lambda to hourly resolution
 lambdaH = zeros(numel(lambda)/4,1);
 
@@ -21,13 +19,13 @@ end
 
 T = numel(lambdaH); % number of time steps
 
-sum(lambdaH>200)
-mean(lambdaH(lambdaH>200))
-sum(lambdaH<0)
-mean(lambdaH(lambdaH<0))
-mean(lambdaH(lambdaH>=0 & lambdaH<=200))
+% sum(lambdaH>200)
+% mean(lambdaH(lambdaH>200))
+% sum(lambdaH<0)
+% mean(lambdaH(lambdaH<0))
+% mean(lambdaH(lambdaH>=0 & lambdaH<=200))
 %%
-Dur = 1; 
+Dur = 30; 
 Pr = 1/(Dur*24); % normalized power rating wrt energy rating
 P = Pr*Ts; % actual power rating taking time step size into account
 eta = .8; % efficiency
@@ -105,4 +103,4 @@ solTimeOut = toc;
 
 clear v
 
-save(sprintf('%s_%s_Dur%d_%d_%d.mat', ISO, Location, Dur, Ystart, Yend), '-v7.3')
+save(sprintf('%s_%s_Dur%d_%d_%d_DS.mat', ISO, Location, Dur, Ystart, Yend), '-v7.3')

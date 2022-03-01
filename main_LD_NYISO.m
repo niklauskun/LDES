@@ -5,7 +5,7 @@ Location = 'LONGIL';
 load(sprintf('%s_%s_2010_2019.mat', ISO, Location))
 Ts = 1; % time step
 Ystart = 2017; % start year
-Yend = 2017; % end year
+Yend = 2019; % end year
 lambda = reshape(RTP(:,(end-(2020-Ystart)*365+1):(end-(2019-Yend)*365)),numel(RTP(:,(end-(2020-Ystart)*365+1):(end-(2019-Yend)*365))),1); 
 
 %% convert lambda to hourly resolution
@@ -16,11 +16,13 @@ for i = 1:numel(lambdaH)
 end
                 
 T = numel(lambdaH); % number of time steps
-% sum(lambdaH>200)
-% mean(lambdaH(lambdaH>200))
-% sum(lambdaH<0)
-% mean(lambdaH(lambdaH<0))
-% mean(lambdaH(lambdaH>=0 & lambdaH<=200))
+mean(lambdaH)
+std(lambdaH)
+sum(lambdaH>200)
+mean(lambdaH(lambdaH>200))
+sum(lambdaH<0)
+mean(lambdaH(lambdaH<0))
+mean(lambdaH(lambdaH>=0 & lambdaH<=200))
 %%
 Dur = 1; 
 Pr = 1/(Dur*24); % normalized power rating wrt energy rating

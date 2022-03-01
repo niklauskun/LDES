@@ -29,7 +29,7 @@ Yplot = reshape([tmp tmp].',2*length(tmp),1);
 Yplot = [0; Yplot(1:(end-1))];
 
 figure(gcf);
-hp = plot(Yplot, Xplot);
+hp = plot(Yplot, Xplot,'LineWidth',1.5);
 
 ColOrd = get(gca, 'ColorOrder'); 
 ord = mod(length(get(gca,'Children')), size(ColOrd,1)); 
